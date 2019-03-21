@@ -53,6 +53,8 @@ public class PrincipalRecord {
                     break;
                 case 4:
                     System.out.println("Gracias por ingresar Data Credito");
+                    PrincipalPersona pp = new PrincipalPersona();
+                    pp.MenuPersona();
                     break;
                 default:
                     System.out.print("Opcion no valida");
@@ -100,15 +102,18 @@ public class PrincipalRecord {
     }
 
     public void verRecords(int identificacion) {
+
         for (Integer iterador : mapa.getData_credito().get(identificacion).getMapaPersonas().keySet()) {
-
             Record record = mapa.getData_credito().get(identificacion).getMapaPersonas().get(iterador);
-            System.out.println("Codigo : " + record.getCodigo());
-            System.out.println("Nombre : " + record.getNombre());
-            System.out.println("Estado : " + record.isEstado());
-            System.out.println("Descripcion : " + record.getDescripcion());
-            System.out.println("Valor : " + record.getValor());
-
+            if (record.getNombre().isEmpty() || record.getDescripcion().isEmpty()) {
+                System.out.println("No hay record disponible");
+            }else{
+                System.out.println("Codigo : " + record.getCodigo());
+                System.out.println("Nombre : " + record.getNombre());
+                System.out.println("Estado : " + record.isEstado());
+                System.out.println("Descripcion : " + record.getDescripcion());
+                System.out.println("Valor : " + record.getValor());
+            }
         }
     }
 }
